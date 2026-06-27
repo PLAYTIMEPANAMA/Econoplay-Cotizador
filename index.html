@@ -18,94 +18,510 @@
     --shadow: 0 2px 8px rgba(0,0,0,0.08);
     --shadow-hover: 0 6px 20px rgba(0,0,0,0.15);
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-  header { background: var(--secondary); color: white; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
-  .header-inner { max-width: 1400px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .logo { display: flex; align-items: center; gap: 12px; }
-  .logo-icon { width: 44px; height: 44px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
-  .logo-text h1 { font-size: 20px; font-weight: 800; letter-spacing: 1px; color: white; }
-  .logo-text p { font-size: 11px; color: rgba(255,255,255,0.65); letter-spacing: 0.5px; }
-  .cart-btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; white-space: nowrap; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--secondary);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .logo-text h1 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: white;
+  }
+  .logo-text p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.5px;
+  }
+  .cart-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
   .cart-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
-  .cart-count { background: white; color: var(--primary); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 1fr 360px; gap: 24px; align-items: start; }
+  .cart-count {
+    background: white;
+    color: var(--primary);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  /* MAIN LAYOUT */
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* LEFT: CATALOG */
   .catalog-section { min-width: 0; }
-  .filter-bar { background: white; border-radius: 16px; padding: 16px; margin-bottom: 20px; box-shadow: var(--shadow); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  /* SEARCH & FILTER */
+  .filter-bar {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 16px 10px 40px;
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+    position: relative;
+  }
   .search-wrap { position: relative; flex: 1; min-width: 200px; }
-  .search-wrap::before { content: '🔍'; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; }
-  .search-input { width: 100%; padding: 10px 16px 10px 40px; border: 1.5px solid var(--border); border-radius: 50px; font-size: 14px; outline: none; transition: border 0.2s; }
+  .search-wrap::before {
+    content: '🔍';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+  }
   .search-input:focus { border-color: var(--primary); }
-  .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tab-btn { padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--border); background: white; font-size: 13px; cursor: pointer; transition: all 0.2s; font-weight: 500; color: var(--text-light); white-space: nowrap; }
-  .tab-btn.active { background: var(--secondary); border-color: var(--secondary); color: white; }
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+    color: var(--text-light);
+    white-space: nowrap;
+  }
+  .tab-btn.active {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: white;
+  }
   .tab-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+  /* CATEGORY SECTIONS */
   .category-group { margin-bottom: 28px; }
-  .category-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
   .category-icon { font-size: 22px; }
-  .category-name { font-size: 17px; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.5px; }
-  .category-count { font-size: 12px; color: white; background: var(--primary); padding: 2px 8px; border-radius: 50px; font-weight: 600; }
-  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-  .product-card { background: white; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.25s; display: flex; flex-direction: column; border: 2px solid transparent; }
-  .product-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
-  .product-card.in-cart { border-color: var(--accent); }
-  .product-img { height: 160px; background: #f0f4f8; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-  .product-card:hover .product-img img { transform: scale(1.05); }
-  .product-badge { position: absolute; top: 8px; right: 8px; background: var(--accent); color: white; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 50px; }
-  .product-body { padding: 12px; flex: 1; display: flex; flex-direction: column; }
-  .product-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
-  .product-price { font-size: 16px; font-weight: 800; color: var(--primary); margin-top: auto; padding-top: 8px; }
+  .category-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .category-count {
+    font-size: 12px;
+    color: white;
+    background: var(--primary);
+    padding: 2px 8px;
+    border-radius: 50px;
+    font-weight: 600;
+  }
+
+  /* PRODUCT GRID */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .product-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.25s;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+  }
+  .product-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+  .product-card.in-cart {
+    border-color: var(--accent);
+  }
+  .product-img {
+    height: 130px;
+    background: linear-gradient(135deg, #f0f4f8 0%, #dde3ea 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    position: relative;
+  }
+  .product-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 50px;
+  }
+  .product-body {
+    padding: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .product-price {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: auto;
+    padding-top: 8px;
+  }
   .product-price span { font-size: 11px; font-weight: 500; color: var(--text-light); }
-  .product-controls { padding: 10px 12px 12px; display: flex; align-items: center; gap: 8px; }
-  .qty-wrapper { display: flex; align-items: center; gap: 6px; flex: 1; }
-  .qty-btn { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--border); background: white; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; font-weight: 700; color: var(--text); }
+
+  /* ADD/REMOVE CONTROLS */
+  .product-controls {
+    padding: 10px 12px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .qty-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+  }
+  .qty-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: white;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-weight: 700;
+    color: var(--text);
+  }
   .qty-btn:hover { border-color: var(--primary); color: var(--primary); }
-  .qty-input { width: 40px; text-align: center; border: 1.5px solid var(--border); border-radius: 8px; padding: 4px; font-size: 14px; font-weight: 700; outline: none; }
+  .qty-input {
+    width: 40px;
+    text-align: center;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    outline: none;
+  }
   .qty-input:focus { border-color: var(--primary); }
-  .add-btn { background: var(--secondary); color: white; border: none; padding: 8px 14px; border-radius: 50px; cursor: pointer; font-size: 12px; font-weight: 700; transition: all 0.2s; white-space: nowrap; }
+  .add-btn {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
   .add-btn:hover { background: var(--primary); }
   .add-btn.added { background: var(--accent); }
   .add-btn.added:hover { background: #388E3C; }
-  .no-results { text-align: center; padding: 40px; color: var(--text-light); font-size: 15px; grid-column: 1/-1; }
-  .sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 16px; }
-  .cart-panel { background: white; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
-  .panel-header { background: var(--secondary); color: white; padding: 16px 20px; font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-  .cart-items { max-height: 280px; overflow-y: auto; padding: 12px; }
-  .cart-items:empty::after { content: 'No hay productos seleccionados'; display: block; text-align: center; color: var(--text-light); font-size: 13px; padding: 20px; }
-  .cart-item { display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 10px; margin-bottom: 6px; background: var(--bg); font-size: 13px; }
+
+  /* NO RESULTS */
+  .no-results {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-light);
+    font-size: 15px;
+    grid-column: 1/-1;
+  }
+
+  /* RIGHT: SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* CART PANEL */
+  .cart-panel {
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .panel-header {
+    background: var(--secondary);
+    color: white;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cart-items {
+    max-height: 280px;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .cart-items:empty::after {
+    content: 'No hay productos seleccionados';
+    display: block;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 13px;
+    padding: 20px;
+  }
+  .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    background: var(--bg);
+    font-size: 13px;
+  }
+  .cart-item-icon { font-size: 20px; }
   .cart-item-info { flex: 1; min-width: 0; }
   .cart-item-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cart-item-sub { color: var(--text-light); font-size: 11px; }
   .cart-item-price { font-weight: 700; color: var(--primary); white-space: nowrap; }
-  .cart-remove { background: none; border: none; cursor: pointer; color: #EF4444; font-size: 16px; padding: 2px; line-height: 1; }
-  .cart-total { padding: 14px 20px; border-top: 2px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .cart-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #EF4444;
+    font-size: 16px;
+    padding: 2px;
+    line-height: 1;
+  }
+  .cart-total {
+    padding: 14px 20px;
+    border-top: 2px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .total-label { font-size: 14px; font-weight: 600; color: var(--text-light); }
   .total-value { font-size: 22px; font-weight: 800; color: var(--secondary); }
-  .form-panel { background: white; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+
+  /* FORM PANEL */
+  .form-panel {
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
   .form-body { padding: 16px; }
   .form-group { margin-bottom: 14px; }
-  .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .form-group input, .form-group textarea { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; transition: border 0.2s; font-family: inherit; color: var(--text); }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+    font-family: inherit;
+    color: var(--text);
+  }
   .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
   .form-group textarea { resize: vertical; min-height: 70px; }
-  .whatsapp-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; background: #25D366; color: white; border: none; border-radius: 14px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.25s; text-decoration: none; letter-spacing: 0.3px; }
-  .whatsapp-btn:hover { background: #1DA851; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
-  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; }
+
+  /* WHATSAPP BUTTON */
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .whatsapp-btn:hover {
+    background: #1DA851;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  }
+  .whatsapp-btn:disabled {
+    background: #9CA3AF;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  .whatsapp-icon { font-size: 22px; }
+
+  /* MOBILE OVERLAY CART */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+  }
   .overlay.open { display: block; }
-  .mobile-sidebar { position: fixed; right: 0; top: 0; bottom: 0; width: min(360px, 100vw); background: var(--bg); z-index: 201; overflow-y: auto; padding: 16px; transform: translateX(100%); transition: transform 0.3s ease; display: flex; flex-direction: column; gap: 16px; }
+  .mobile-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: min(360px, 100vw);
+    background: var(--bg);
+    z-index: 201;
+    overflow-y: auto;
+    padding: 16px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
   .mobile-sidebar.open { transform: translateX(0); }
-  .mobile-close { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text); align-self: flex-end; margin-bottom: -8px; }
+  .mobile-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text);
+    align-self: flex-end;
+    margin-bottom: -8px;
+  }
+
+  /* UTILITY */
   .hidden { display: none !important; }
+
   @media (max-width: 900px) {
-    .container { grid-template-columns: 1fr; padding: 16px; }
+    .container {
+      grid-template-columns: 1fr;
+      padding: 16px;
+    }
     .sidebar { display: none; }
-    .product-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+    .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 12px;
+    }
   }
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="logo">
@@ -122,13 +538,16 @@
   </div>
 </header>
 
+<!-- MOBILE OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeMobileCart()"></div>
 <div class="mobile-sidebar" id="mobileSidebar">
   <button class="mobile-close" onclick="closeMobileCart()">✕</button>
   <div id="mobileSidebarContent"></div>
 </div>
 
+<!-- MAIN -->
 <div class="container">
+  <!-- CATALOG -->
   <div class="catalog-section">
     <div class="filter-bar">
       <div class="search-wrap">
@@ -144,75 +563,77 @@
     </div>
     <div id="catalogContainer"></div>
   </div>
+
+  <!-- SIDEBAR (desktop) -->
   <div class="sidebar" id="desktopSidebar"></div>
 </div>
 
 <script>
-const WIX = "https://static.wixstatic.com/media/";
 const products = [
-  { id: 1,  name: "PALMERAS PARK Parque Infantil",       price: 5700,  cat: "Parques Infantiles", img: WIX+"94b53e_03d6cdbf30764fb78eb52863668a440b~mv2.png" },
-  { id: 2,  name: "Forest Park Parque Infantil",         price: 5880,  cat: "Parques Infantiles", img: WIX+"94b53e_bb56bce570854a9eb69ba39795510bb6~mv2.jpg" },
-  { id: 3,  name: "SLIDER Parque Infantil",              price: 6220,  cat: "Parques Infantiles", img: WIX+"94b53e_db93a37b20bc47178b22cd11e32fcc5d~mv2.png" },
-  { id: 4,  name: "FUN Parque Infantil",                 price: 6120,  cat: "Parques Infantiles", img: WIX+"94b53e_99b9b388b796458e85d18664cae1a52e~mv2.png" },
-  { id: 5,  name: "KITTY Parque Infantil",               price: 5890,  cat: "Parques Infantiles", img: WIX+"94b53e_ec59941c4c504bcb8dd7a46d975986c6~mv2.jpg" },
-  { id: 6,  name: "ARCHIE Parque Infantil",              price: 5220,  cat: "Parques Infantiles", img: WIX+"94b53e_077041499d57445ead4eb1a6fef5d225~mv2.jpg" },
-  { id: 7,  name: "SWING CITY Parque Infantil",          price: 4870,  cat: "Parques Infantiles", img: WIX+"94b53e_279ddc6b9c72477d986bb2f53c5ba0f7~mv2.jpg" },
-  { id: 8,  name: "NATURAL FLOWER Parque Infantil",      price: 4360,  cat: "Parques Infantiles", img: WIX+"94b53e_59b4ec9f44aa462595822b4ad86ddd72~mv2.jpg" },
-  { id: 9,  name: "CROC Parque Infantil",                price: 3900,  cat: "Parques Infantiles", img: WIX+"94b53e_0ba3325da3e443d8a4c5999584c98e28~mv2.jpeg" },
-  { id: 10, name: "PALMERAS Parque Infantil Económico",  price: 3990,  cat: "Parques Infantiles", img: WIX+"94b53e_fef6f8f2428b45ac85785ed846c679e1~mv2.jpg" },
-  { id: 11, name: "Little Fun Parque con Columpio",      price: 3980,  cat: "Parques Infantiles", img: WIX+"94b53e_7d444f665232435b8bd464d378a0a9d5~mv2.jpg" },
-  { id: 12, name: "ACQUA SWING Parque Infantil",         price: 3760,  cat: "Parques Infantiles", img: WIX+"94b53e_f372f79fa4ca4476a5953146edfa0ebf~mv2.jpeg" },
-  { id: 13, name: "ACQUA Parque Infantil",               price: 3200,  cat: "Parques Infantiles", img: WIX+"94b53e_47675594a12644df8ae0a5429bf80eb0~mv2.jpg" },
-  { id: 14, name: "Torre Escaladora",                    price: 2380,  cat: "Parques Infantiles", img: WIX+"94b53e_f2170b535cc94439902900bb99f15b54~mv2.jpg" },
-  { id: 15, name: "Tobogán Independiente",               price: 2160,  cat: "Parques Infantiles", img: WIX+"94b53e_c1b15444e51e4496898f7cf6c71d841f~mv2.png" },
-  { id: 16, name: "Tobogán Elefante",                    price: 1920,  cat: "Parques Infantiles", img: WIX+"94b53e_8d9506d8cdfa4b5bb52550d7097173b4~mv2.jpeg" },
-  { id: 17, name: "Columpio Triple",                     price: 1320,  cat: "Parques Infantiles", img: WIX+"94b53e_54f1d304fad34705b118345d36145a92~mv2.jpeg" },
-  { id: 18, name: "Tobogán Individual",                  price: 1260,  cat: "Parques Infantiles", img: WIX+"94b53e_2d244ec68b644abf988d4514578af0c1~mv2.jpeg" },
-  { id: 19, name: "Rueda Giratoria",                     price: 990,   cat: "Parques Infantiles", img: WIX+"94b53e_f576e78fb5a84ad7b0bf632cbcbc1d23~mv2.png" },
-  { id: 20, name: "Rueda Giratoria Universal",           price: 960,   cat: "Parques Infantiles", img: WIX+"94b53e_521e7804f62c4c3cadfd77b32e860537~mv2.jpeg" },
-  { id: 21, name: "Columpio Doble",                      price: 980,   cat: "Parques Infantiles", img: WIX+"94b53e_3ae1aee2dde043beb265b23a8c78ddc4~mv2.png" },
-  { id: 22, name: "Duomo Escalador",                     price: 1020,  cat: "Parques Infantiles", img: WIX+"94b53e_71494d4473f04ce6ab1b4cb5cb996770~mv2.png" },
-  { id: 23, name: "Sube y Baja con Resorte",             price: 480,   cat: "Parques Infantiles", img: WIX+"94b53e_bd8dac63a6154bb3b91c92bef4ba642c~mv2.png" },
-  { id: 24, name: "Balancín / Sube y Baja",              price: 420,   cat: "Parques Infantiles", img: WIX+"94b53e_3100ae5f34284e0fa5af585b415cc37c~mv2.png" },
-  { id: 25, name: "Balancín Motocicleta",                price: 420,   cat: "Parques Infantiles", img: WIX+"94b53e_ddcfb396c3414b69aa7a8e18f77cd6d8~mv2.jpg" },
-  { id: 26, name: "Balancín Gallo Loco",                 price: 420,   cat: "Parques Infantiles", img: WIX+"94b53e_393284288f69490089ec70631d9791c1~mv2.jpeg" },
-  { id: 27, name: "Asientos para Columpios",             price: 99,    cat: "Parques Infantiles", img: WIX+"94b53e_e3b20f67d88048c68a077dae7ef14101~mv2.jpg" },
-  { id: 28, name: "Asientos de Bebé para Columpios",     price: 99,    cat: "Parques Infantiles", img: WIX+"94b53e_805602a7dc21460eb1868a3a3efb92c7~mv2.jpg" },
-  { id: 29, name: "CROSSFIT BOOTCAMP",                   price: 4890,  cat: "Maquinas Biosaludables", img: WIX+"94b53e_9d74b998916447469064ac989c89e85e~mv2.png" },
-  { id: 30, name: "CROSSFIT STATION",                    price: 3980,  cat: "Maquinas Biosaludables", img: WIX+"94b53e_410a6ea01afa4b14b9b0a5b9d6f0cc26~mv2.png" },
-  { id: 31, name: "PASAMANOS - Monkey Bars",             price: 940,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_6d9a5569ff3f4a539c01c0457f76e9e7~mv2.jpg" },
-  { id: 32, name: "PONY",                                price: 940,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_e4564b4edeed434f9576161a83d51a69~mv2.jpg" },
-  { id: 33, name: "PRENSA DE PECHO",                     price: 720,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_0ee3db3057174e099fc1cf5ca66afb67~mv2.jpg" },
-  { id: 34, name: "CAMINADORA",                          price: 720,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_02c343db776e457a81ec6c69448b8dbd~mv2.jpeg" },
-  { id: 35, name: "ANDADOR",                             price: 720,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_80f98079b2b242a8b8743e42a469c30a~mv2.jpg" },
-  { id: 36, name: "SURF",                                price: 720,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_5e2efa964dc943a8ac43fc310f07e167~mv2.jpg" },
-  { id: 37, name: "REMO",                                price: 720,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_3c150c28355e47a8bbda75297a42e1c2~mv2.jpeg" },
-  { id: 38, name: "VOLANTE",                             price: 690,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_cd6330203c6d457697c6884153142cf6~mv2.jpg" },
-  { id: 39, name: "ABDOMINALES - SIT UP",                price: 690,   cat: "Maquinas Biosaludables", img: WIX+"94b53e_67b4f97ea9f34c4b94f9e8485616b7af~mv2.jpg" },
-  { id: 40, name: "Banca Boston",                        price: 620,   cat: "Mobiliario Urbano", img: WIX+"94b53e_510f27390ca8475b8a1cd29c5663730b~mv2.png" },
-  { id: 41, name: "Banca AIRE de Polietileno",           price: 620,   cat: "Mobiliario Urbano", img: WIX+"94b53e_1ca5931535464e48b1d431ab8898f179~mv2.avif" },
-  { id: 42, name: "Basurero IBIZA",                      price: 529,   cat: "Mobiliario Urbano", img: WIX+"94b53e_7f94597df4434c53828bca62a159089e~mv2.jpg" },
-  { id: 43, name: "Basurero MILANO (grande)",            price: 460,   cat: "Mobiliario Urbano", img: WIX+"94b53e_d2431a2fb25d4e50811b77c724bfdd48~mv2.png" },
-  { id: 44, name: "Basurero VATICANO",                   price: 460,   cat: "Mobiliario Urbano", img: WIX+"94b53e_03a1495e7fee42ed9f75e7f37e81dc97~mv2.jpg" },
-  { id: 45, name: "Basurero BULGARI",                    price: 482,   cat: "Mobiliario Urbano", img: WIX+"94b53e_653330083f1a401c8e666eaa55411c99~mv2.jpeg" },
-  { id: 46, name: "Banca Urbana Marrón Reciclado",       price: 420,   cat: "Mobiliario Urbano", img: WIX+"94b53e_842523f7abba4235ae74c54be6393bb9~mv2.avif" },
-  { id: 47, name: "Banca Deportiva con Respaldar",       price: 380,   cat: "Mobiliario Urbano", img: WIX+"94b53e_5e70264d829f47688af4291cb82cfb0f~mv2.jpg" },
-  { id: 48, name: "Banca Deportiva sin Respaldar",       price: 340,   cat: "Mobiliario Urbano", img: WIX+"94b53e_8399280de8f04baea1a5c80949222603~mv2.jpeg" },
-  { id: 49, name: "Banca Moderna",                       price: 320,   cat: "Mobiliario Urbano", img: WIX+"94b53e_6a51ee0341e74db2b9dd11bf07caadea~mv2.jpg" },
-  { id: 50, name: "Papelera OSLO",                       price: 295,   cat: "Mobiliario Urbano", img: WIX+"94b53e_13b258776deb414893b30147e6cc47b6~mv2.jpeg" },
-  { id: 51, name: "ECO PET STATION",                     price: 295,   cat: "Mobiliario Urbano", img: WIX+"94b53e_371b1597c31544598e5d1fe6502e2c9d~mv2.jpeg" },
-  { id: 52, name: "Papelera BERLIN",                     price: 320,   cat: "Mobiliario Urbano", img: WIX+"94b53e_e423ae62ab6b46cbbbbb1c5a25352c2d~mv2.jpg" },
-  { id: 53, name: "Basurero C23X Barcelona (Inox)",      price: 320,   cat: "Mobiliario Urbano", img: WIX+"94b53e_7b9a2cca03634f158c7e0e4f6d386cc0~mv2.jpg" },
-  { id: 54, name: "Basurero MILANO (estándar)",          price: 325,   cat: "Mobiliario Urbano", img: WIX+"94b53e_10a5dddca5e541d5a91c0a8b01ae252d~mv2.png" },
-  { id: 55, name: "Basurero TOSCANA",                    price: 240,   cat: "Mobiliario Urbano", img: WIX+"94b53e_cfdcd9da37bb469fa4b4ffbde148b674~mv2.jpg" },
-  { id: 56, name: "Basurero C23G Barcelona (Galvaniz.)", price: 210,   cat: "Mobiliario Urbano", img: WIX+"94b53e_5dc44a4bb4ec4dfeb5a97b160f28937e~mv2.jpg" },
-  { id: 57, name: "Basurero SCUDERIA (Plástico)",        price: 165,   cat: "Mobiliario Urbano", img: WIX+"94b53e_1e2553b0e3284710a67e8964fde0c10d~mv2.avif" },
-  { id: 58, name: "Circuito Canino Completo",            price: 2655,  cat: "Parques Caninos", img: WIX+"94b53e_99c5b17d9d3845b2be0cba5b78055274~mv2.jpg" },
-  { id: 59, name: "Rampa Canina con Descanso",           price: 1680,  cat: "Parques Caninos", img: WIX+"94b53e_8edfa56433e644fe9758c7b9baaa525d~mv2.jpg" },
-  { id: 60, name: "Doggie Steps – 4 Pasos",              price: 580,   cat: "Parques Caninos", img: WIX+"94b53e_064e0e6edd474c76882551560f00f9a6~mv2.png" },
+  { id: 1,  name: "PALMERAS PARK Parque Infantil",       price: 5700,  cat: "Parques Infantiles", icon: "🌴", url: "parques-infantiles-panama-palmeras-park" },
+  { id: 2,  name: "Forest Park Parque Infantil",         price: 5880,  cat: "Parques Infantiles", icon: "🌳", url: "forest-park-parque-infantil" },
+  { id: 3,  name: "SLIDER Parque Infantil",              price: 6220,  cat: "Parques Infantiles", icon: "🛝", url: "slider-parque-infantil" },
+  { id: 4,  name: "FUN Parque Infantil",                 price: 6120,  cat: "Parques Infantiles", icon: "🎡", url: "fun" },
+  { id: 5,  name: "KITTY Parque Infantil",               price: 5890,  cat: "Parques Infantiles", icon: "🐱", url: "tropical" },
+  { id: 6,  name: "ARCHIE Parque Infantil",              price: 5220,  cat: "Parques Infantiles", icon: "🏰", url: "archies" },
+  { id: 7,  name: "SWING CITY Parque Infantil",          price: 4870,  cat: "Parques Infantiles", icon: "🎠", url: "diverlandia-parque-infantil" },
+  { id: 8,  name: "NATURAL FLOWER Parque Infantil",      price: 4360,  cat: "Parques Infantiles", icon: "🌸", url: "parques-infantiles-economicos-panama-modelo-natural" },
+  { id: 9,  name: "CROC Parque Infantil",                price: 3900,  cat: "Parques Infantiles", icon: "🐊", url: "parques-infantiles-panama-croc" },
+  { id: 10, name: "PALMERAS Parque Infantil Económico",  price: 3990,  cat: "Parques Infantiles", icon: "🌴", url: "parque-infantil-economico-palmeras-panama" },
+  { id: 11, name: "Little Fun Parque con Columpio",      price: 3980,  cat: "Parques Infantiles", icon: "🎪", url: "little-fun-parque-infantil-con-columpio" },
+  { id: 12, name: "ACQUA SWING Parque Infantil",         price: 3760,  cat: "Parques Infantiles", icon: "💧", url: "parque-infantil-acqua-swing-con-columpio" },
+  { id: 13, name: "ACQUA Parque Infantil",               price: 3200,  cat: "Parques Infantiles", icon: "🏊", url: "acqua-parque-infantil" },
+  { id: 14, name: "Torre Escaladora",                    price: 2380,  cat: "Parques Infantiles", icon: "🗼", url: "parques-infantiles-panama-torre-escaladora" },
+  { id: 15, name: "Tobogán Independiente",               price: 2160,  cat: "Parques Infantiles", icon: "🛝", url: "tobogan-independiente-panama" },
+  { id: 16, name: "Tobogán Elefante",                    price: 1920,  cat: "Parques Infantiles", icon: "🐘", url: "tobogan-elefante-panama" },
+  { id: 17, name: "Columpio Triple",                     price: 1320,  cat: "Parques Infantiles", icon: "🎠", url: "columpio-triple" },
+  { id: 18, name: "Tobogán Individual",                  price: 1260,  cat: "Parques Infantiles", icon: "🛝", url: "tobogan-individual" },
+  { id: 19, name: "Rueda Giratoria",                     price: 990,   cat: "Parques Infantiles", icon: "⭕", url: "rueda-giratoria-parques-infantiles-panama" },
+  { id: 20, name: "Rueda Giratoria Universal",           price: 960,   cat: "Parques Infantiles", icon: "🎯", url: "rueda-giratoria-universal" },
+  { id: 21, name: "Columpio Doble",                      price: 980,   cat: "Parques Infantiles", icon: "🎠", url: "columpiodobleparaparquesenpanama" },
+  { id: 22, name: "Duomo Escalador",                     price: 1020,  cat: "Parques Infantiles", icon: "⛺", url: "duomo-escalador" },
+  { id: 23, name: "Sube y Baja con Resorte",             price: 480,   cat: "Parques Infantiles", icon: "↕️", url: "parques-infantiles-panama-sube-y-baja" },
+  { id: 24, name: "Balancín / Sube y Baja",              price: 420,   cat: "Parques Infantiles", icon: "🎭", url: "balancines-para-parques-panama" },
+  { id: 25, name: "Balancín Motocicleta",                price: 420,   cat: "Parques Infantiles", icon: "🏍️", url: "balancin-motocicleta" },
+  { id: 26, name: "Balancín Gallo Loco",                 price: 420,   cat: "Parques Infantiles", icon: "🐓", url: "balancin-gallo-loco" },
+  { id: 27, name: "Asientos para Columpios",             price: 99,    cat: "Parques Infantiles", icon: "💺", url: "asientos-para-columpios" },
+  { id: 28, name: "Asientos de Bebé para Columpios",     price: 99,    cat: "Parques Infantiles", icon: "👶", url: "asientos-de-bebes-para-columpios-panama" },
+  { id: 29, name: "CROSSFIT BOOTCAMP",                   price: 4890,  cat: "Maquinas Biosaludables", icon: "🏋️", url: "crossfit-bootcamp-maquina-biosaludable" },
+  { id: 30, name: "CROSSFIT STATION",                    price: 3980,  cat: "Maquinas Biosaludables", icon: "💪", url: "crossfit-station-maquina-biosaludable-panama" },
+  { id: 31, name: "PASAMANOS - Monkey Bars",             price: 940,   cat: "Maquinas Biosaludables", icon: "🤸", url: "pasamanos-monkey-bars-maquina-biosaludable" },
+  { id: 32, name: "PONY",                                price: 940,   cat: "Maquinas Biosaludables", icon: "🐴", url: "pony-maquinas-biosaludables" },
+  { id: 33, name: "PRENSA DE PECHO",                     price: 720,   cat: "Maquinas Biosaludables", icon: "🏋️", url: "prensa-de-pecho-maquinas-biosaludables" },
+  { id: 34, name: "CAMINADORA",                          price: 720,   cat: "Maquinas Biosaludables", icon: "🚶", url: "caminadora-maquina-biosaludable-panama" },
+  { id: 35, name: "ANDADOR",                             price: 720,   cat: "Maquinas Biosaludables", icon: "🦾", url: "andador-maquinas-biosaludables" },
+  { id: 36, name: "SURF",                                price: 720,   cat: "Maquinas Biosaludables", icon: "🏄", url: "surf-maquina-biosaludable" },
+  { id: 37, name: "REMO",                                price: 720,   cat: "Maquinas Biosaludables", icon: "🚣", url: "remo-maquinas-biosaludables-panama" },
+  { id: 38, name: "VOLANTE",                             price: 690,   cat: "Maquinas Biosaludables", icon: "🎡", url: "volante-maquina-biosaludable-panama" },
+  { id: 39, name: "ABDOMINALES - SIT UP",                price: 690,   cat: "Maquinas Biosaludables", icon: "🤾", url: "abdominales-estación-maquina-biosaludable" },
+  { id: 40, name: "Banca Boston",                        price: 620,   cat: "Mobiliario Urbano", icon: "🪑", url: "banca-boston" },
+  { id: 41, name: "Banca AIRE de Polietileno",           price: 620,   cat: "Mobiliario Urbano", icon: "🪑", url: "banca-aire-de-de-polietileno-de-calidad" },
+  { id: 42, name: "Basurero IBIZA",                      price: 529,   cat: "Mobiliario Urbano", icon: "🗑️", url: "basurero-modelo-ibiza-de-politetileno" },
+  { id: 43, name: "Basurero MILANO (grande)",            price: 460,   cat: "Mobiliario Urbano", icon: "🗑️", url: "basurero-milano" },
+  { id: 44, name: "Basurero VATICANO",                   price: 460,   cat: "Mobiliario Urbano", icon: "🗑️", url: "basurero-modelo-vaticano" },
+  { id: 45, name: "Basurero BULGARI",                    price: 482,   cat: "Mobiliario Urbano", icon: "🗑️", url: "basurero-modelo-bulgari" },
+  { id: 46, name: "Banca Urbana Marrón Reciclado",       price: 420,   cat: "Mobiliario Urbano", icon: "🪑", url: "banca-urbana-modelo-marron-plastico-reciclado" },
+  { id: 47, name: "Banca Deportiva con Respaldar",       price: 380,   cat: "Mobiliario Urbano", icon: "🪑", url: "banca-deportiva-con-respaldar" },
+  { id: 48, name: "Banca Deportiva sin Respaldar",       price: 340,   cat: "Mobiliario Urbano", icon: "🪑", url: "banca-deportiva-sin-respaldar" },
+  { id: 49, name: "Banca Moderna",                       price: 320,   cat: "Mobiliario Urbano", icon: "🪑", url: "banca-moderna" },
+  { id: 50, name: "Papelera OSLO",                       price: 295,   cat: "Mobiliario Urbano", icon: "🗑️", url: "papelera-oslo" },
+  { id: 51, name: "ECO PET STATION",                     price: 295,   cat: "Mobiliario Urbano", icon: "🐾", url: "estacion-de-desechos-para-mascotas-en-panama" },
+  { id: 52, name: "Papelera BERLIN",                     price: 320,   cat: "Mobiliario Urbano", icon: "🗑️", url: "papelera-berlin" },
+  { id: 53, name: "Basurero C23X Barcelona (Inox)",      price: 320,   cat: "Mobiliario Urbano", icon: "🗑️", url: "basurero-de-acero-inoxidable-c23x-modelo-barcelona" },
+  { id: 54, name: "Basurero MILANO (estándar)",          price: 325,   cat: "Mobiliario Urbano", icon: "🗑️", url: "basurero-para-exteriores-modelo-milano" },
+  { id: 55, name: "Basurero TOSCANA",                    price: 240,   cat: "Mobiliario Urbano", icon: "🗑️", url: "basurero-modelo-toscana" },
+  { id: 56, name: "Basurero C23G Barcelona (Galvaniz.)", price: 210,   cat: "Mobiliario Urbano", icon: "🗑️", url: "papelera-c23g-60litros-galvanizada" },
+  { id: 57, name: "Basurero SCUDERIA (Plástico)",        price: 165,   cat: "Mobiliario Urbano", icon: "🗑️", url: "basurero-de-plastico-polietileno-para-exteriores-panama-de-colores" },
+  { id: 58, name: "Circuito Canino Completo",            price: 2655,  cat: "Parques Caninos", icon: "🐕", url: "circuito-parque-canino-completo" },
+  { id: 59, name: "Rampa Canina con Descanso",           price: 1680,  cat: "Parques Caninos", icon: "🐾", url: "rampa-agilidad-para-perros-panama" },
+  { id: 60, name: "Doggie Steps – 4 Pasos",              price: 580,   cat: "Parques Caninos", icon: "🐩", url: "pasos-parque-canino-panama" },
 ];
 
 const WHATSAPP_NUMBER = "50760903223";
+
 let cart = {};
 let activeCategory = "all";
 
@@ -234,9 +655,15 @@ function getFilteredProducts() {
 function renderCatalog() {
   const filtered = getFilteredProducts();
   const container = document.getElementById("catalogContainer");
-  if (filtered.length === 0) { container.innerHTML = `<div class="no-results">😕 No se encontraron productos.</div>`; return; }
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="no-results">😕 No se encontraron productos. Intenta otra búsqueda.</div>`;
+    return;
+  }
   const groups = {};
-  filtered.forEach(p => { if (!groups[p.cat]) groups[p.cat] = []; groups[p.cat].push(p); });
+  filtered.forEach(p => {
+    if (!groups[p.cat]) groups[p.cat] = [];
+    groups[p.cat].push(p);
+  });
   const catMeta = {
     "Parques Infantiles":    { icon: "🎠", label: "Parques Infantiles" },
     "Maquinas Biosaludables":{ icon: "💪", label: "Máquinas Biosaludables" },
@@ -245,14 +672,17 @@ function renderCatalog() {
   };
   container.innerHTML = Object.entries(groups).map(([cat, prods]) => {
     const meta = catMeta[cat] || { icon: "📦", label: cat };
-    return `<div class="category-group">
-      <div class="category-header">
-        <span class="category-icon">${meta.icon}</span>
-        <span class="category-name">${meta.label}</span>
-        <span class="category-count">${prods.length}</span>
-      </div>
-      <div class="product-grid">${prods.map(p => renderProductCard(p)).join("")}</div>
-    </div>`;
+    return `
+      <div class="category-group">
+        <div class="category-header">
+          <span class="category-icon">${meta.icon}</span>
+          <span class="category-name">${meta.label}</span>
+          <span class="category-count">${prods.length}</span>
+        </div>
+        <div class="product-grid">
+          ${prods.map(p => renderProductCard(p)).join("")}
+        </div>
+      </div>`;
   }).join("");
 }
 
@@ -262,7 +692,7 @@ function renderProductCard(p) {
   return `
     <div class="product-card ${inCart ? "in-cart" : ""}" id="card-${p.id}">
       <div class="product-img">
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <span>${p.icon}</span>
         ${inCart ? `<span class="product-badge">✓ En lista</span>` : ""}
       </div>
       <div class="product-body">
@@ -272,10 +702,12 @@ function renderProductCard(p) {
       <div class="product-controls">
         <div class="qty-wrapper">
           <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
-          <input class="qty-input" type="number" min="0" value="${qty}" id="qty-${p.id}" onchange="setQty(${p.id}, parseInt(this.value)||0)">
+          <input class="qty-input" type="number" min="0" value="${qty}" id="qty-${p.id}"
+            onchange="setQty(${p.id}, parseInt(this.value)||0)">
           <button class="qty-btn" onclick="changeQty(${p.id}, 1)">+</button>
         </div>
-        <button class="add-btn ${inCart ? "added" : ""}" onclick="changeQty(${p.id}, 1)" id="addbtn-${p.id}">
+        <button class="add-btn ${inCart ? "added" : ""}" onclick="changeQty(${p.id}, 1)"
+          id="addbtn-${p.id}">
           ${inCart ? "✓ Agregar más" : "+ Agregar"}
         </button>
       </div>
@@ -288,50 +720,74 @@ function renderSidebar(container) {
 
 function renderCartPanel() {
   const cartEntries = Object.entries(cart).filter(([id,q]) => q > 0);
-  const total = cartEntries.reduce((sum, [id,q]) => { const p = products.find(x => x.id == id); return sum + (p ? p.price * q : 0); }, 0);
-  const itemsHtml = cartEntries.map(([id, qty]) => {
+  const total = cartEntries.reduce((sum, [id,q]) => {
+    const p = products.find(x => x.id == id);
+    return sum + (p ? p.price * q : 0);
+  }, 0);
+  const itemsHtml = cartEntries.length === 0 ? "" : cartEntries.map(([id, qty]) => {
     const p = products.find(x => x.id == id);
     if (!p) return "";
-    return `<div class="cart-item">
-      <img src="${p.img}" alt="${p.name}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0;">
-      <div class="cart-item-info">
-        <div class="cart-item-name">${p.name}</div>
-        <div class="cart-item-sub">Cant: ${qty} × $${p.price.toLocaleString("en-US",{minimumFractionDigits:2})}</div>
-      </div>
-      <span class="cart-item-price">$${(p.price*qty).toLocaleString("en-US",{minimumFractionDigits:2})}</span>
-      <button class="cart-remove" onclick="removeFromCart(${p.id})" title="Eliminar">✕</button>
-    </div>`;
+    return `
+      <div class="cart-item">
+        <span class="cart-item-icon">${p.icon}</span>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${p.name}</div>
+          <div class="cart-item-sub">Cant: ${qty} × $${p.price.toLocaleString("en-US", {minimumFractionDigits:2})}</div>
+        </div>
+        <span class="cart-item-price">$${(p.price*qty).toLocaleString("en-US",{minimumFractionDigits:2})}</span>
+        <button class="cart-remove" onclick="removeFromCart(${p.id})" title="Eliminar">✕</button>
+      </div>`;
   }).join("");
-  return `<div class="cart-panel">
-    <div class="panel-header">🛒 Mi Cotización <span style="margin-left:auto;font-size:12px;opacity:.7">${cartEntries.length} producto(s)</span></div>
-    <div class="cart-items">${itemsHtml}</div>
-    <div class="cart-total">
-      <span class="total-label">TOTAL ESTIMADO</span>
-      <span class="total-value">$${total.toLocaleString("en-US",{minimumFractionDigits:2})}</span>
-    </div>
-  </div>`;
+  return `
+    <div class="cart-panel">
+      <div class="panel-header">🛒 Mi Cotización <span style="margin-left:auto;font-size:12px;opacity:.7">${cartEntries.length} producto(s)</span></div>
+      <div class="cart-items">${itemsHtml}</div>
+      <div class="cart-total">
+        <span class="total-label">TOTAL ESTIMADO</span>
+        <span class="total-value">$${total.toLocaleString("en-US",{minimumFractionDigits:2})}</span>
+      </div>
+    </div>`;
 }
 
 function renderFormPanel() {
-  return `<div class="form-panel">
-    <div class="panel-header">📋 Tus Datos de Contacto</div>
-    <div class="form-body">
-      <div class="form-group"><label>Nombre Completo *</label><input type="text" id="clientName" placeholder="Tu nombre" oninput="syncForm()"></div>
-      <div class="form-group"><label>Teléfono / WhatsApp *</label><input type="tel" id="clientPhone" placeholder="+507 6000-0000" oninput="syncForm()"></div>
-      <div class="form-group"><label>Correo Electrónico</label><input type="email" id="clientEmail" placeholder="correo@ejemplo.com" oninput="syncForm()"></div>
-      <div class="form-group"><label>Empresa / Proyecto</label><input type="text" id="clientBusiness" placeholder="Empresa o nombre del proyecto" oninput="syncForm()"></div>
-      <div class="form-group"><label>Notas adicionales</label><textarea id="clientNotes" placeholder="Ubicación, fecha estimada, preguntas..." oninput="syncForm()"></textarea></div>
+  return `
+    <div class="form-panel">
+      <div class="panel-header">📋 Tus Datos de Contacto</div>
+      <div class="form-body">
+        <div class="form-group">
+          <label>Nombre Completo *</label>
+          <input type="text" id="clientName" placeholder="Tu nombre" oninput="syncForm()">
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp *</label>
+          <input type="tel" id="clientPhone" placeholder="+507 6000-0000" oninput="syncForm()">
+        </div>
+        <div class="form-group">
+          <label>Correo Electrónico</label>
+          <input type="email" id="clientEmail" placeholder="correo@ejemplo.com" oninput="syncForm()">
+        </div>
+        <div class="form-group">
+          <label>Nombre de Empresa / Proyecto</label>
+          <input type="text" id="clientBusiness" placeholder="Empresa o nombre del proyecto" oninput="syncForm()">
+        </div>
+        <div class="form-group">
+          <label>Notas adicionales</label>
+          <textarea id="clientNotes" placeholder="Ubicación, fecha estimada, preguntas..." oninput="syncForm()"></textarea>
+        </div>
+      </div>
     </div>
-  </div>
-  <button class="whatsapp-btn" onclick="sendWhatsApp()">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Enviar Cotización por WhatsApp
-  </button>`;
+    <button class="whatsapp-btn" id="waBtn" onclick="sendWhatsApp()">
+      <span class="whatsapp-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </span>
+      Enviar Cotización por WhatsApp
+    </button>`;
 }
 
 function changeQty(id, delta) {
   const current = cart[id] || 0;
-  setQty(id, Math.max(0, current + delta));
+  const newQty = Math.max(0, current + delta);
+  setQty(id, newQty);
 }
 
 function setQty(id, qty) {
@@ -344,11 +800,17 @@ function setQty(id, qty) {
     const qtyInput = document.getElementById(`qty-${id}`);
     if (qtyInput) qtyInput.value = qty;
     const addBtn = document.getElementById(`addbtn-${id}`);
-    if (addBtn) { addBtn.className = `add-btn ${inCart ? "added" : ""}`; addBtn.textContent = inCart ? "✓ Agregar más" : "+ Agregar"; }
-    const imgDiv = card.querySelector(".product-img");
-    const badge = imgDiv.querySelector(".product-badge");
-    if (inCart && !badge) imgDiv.insertAdjacentHTML("beforeend", `<span class="product-badge">✓ En lista</span>`);
-    else if (!inCart && badge) badge.remove();
+    if (addBtn) {
+      addBtn.className = `add-btn ${inCart ? "added" : ""}`;
+      addBtn.textContent = inCart ? "✓ Agregar más" : "+ Agregar";
+    }
+    const img = card.querySelector(".product-img");
+    const badge = img.querySelector(".product-badge");
+    if (inCart && !badge) {
+      img.insertAdjacentHTML("beforeend", `<span class="product-badge">✓ En lista</span>`);
+    } else if (!inCart && badge) {
+      badge.remove();
+    }
   }
   updateCartCount();
   refreshSidebars();
@@ -357,22 +819,22 @@ function setQty(id, qty) {
 function removeFromCart(id) { setQty(id, 0); }
 
 function updateCartCount() {
-  document.getElementById("cartCount").textContent = Object.values(cart).reduce((s,q) => s+q, 0);
+  const count = Object.values(cart).reduce((s,q) => s+q, 0);
+  document.getElementById("cartCount").textContent = count;
 }
 
 function refreshSidebars() {
-  const ids = ['clientName','clientPhone','clientEmail','clientBusiness','clientNotes'];
   const desktop = document.getElementById("desktopSidebar");
   if (desktop) {
-    const vals = ids.map(id => document.getElementById(id)?.value || "");
+    const vals = ['clientName','clientPhone','clientEmail','clientBusiness','clientNotes'].map(id => document.getElementById(id)?.value || "");
     renderSidebar(desktop);
-    ids.forEach((id,i) => { document.getElementById(id).value = vals[i]; });
+    ['clientName','clientPhone','clientEmail','clientBusiness','clientNotes'].forEach((id,i) => { document.getElementById(id).value = vals[i]; });
   }
   const mobile = document.getElementById("mobileSidebarContent");
   if (mobile && document.getElementById("mobileSidebar").classList.contains("open")) {
-    const vals = ids.map(id => document.getElementById(id)?.value || "");
+    const vals = ['clientName','clientPhone','clientEmail','clientBusiness','clientNotes'].map(id => document.getElementById(id)?.value || "");
     renderSidebar(mobile);
-    ids.forEach((id,i) => { document.getElementById(id).value = vals[i]; });
+    ['clientName','clientPhone','clientEmail','clientBusiness','clientNotes'].forEach((id,i) => { document.getElementById(id).value = vals[i]; });
   }
 }
 
@@ -408,8 +870,11 @@ function sendWhatsApp() {
   if (!phone) { alert("Por favor ingresa tu teléfono/WhatsApp."); return; }
   const cartEntries = Object.entries(cart).filter(([id,q]) => q > 0);
   if (cartEntries.length === 0) { alert("Agrega al menos un producto a tu cotización."); return; }
-  let msg = `🎪 *SOLICITUD DE COTIZACIÓN - ECONOPLAY*\n━━━━━━━━━━━━━━━━━━━━\n\n`;
-  msg += `👤 *Datos del Cliente:*\n• Nombre: ${name}\n• Teléfono: ${phone}\n`;
+  let msg = `🎪 *SOLICITUD DE COTIZACIÓN - ECONOPLAY*\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+  msg += `👤 *Datos del Cliente:*\n`;
+  msg += `• Nombre: ${name}\n`;
+  msg += `• Teléfono: ${phone}\n`;
   if (email) msg += `• Email: ${email}\n`;
   if (business) msg += `• Empresa/Proyecto: ${business}\n`;
   msg += `\n📦 *Productos de Interés:*\n`;
@@ -417,9 +882,9 @@ function sendWhatsApp() {
   cartEntries.forEach(([id, qty]) => {
     const p = products.find(x => x.id == id);
     if (!p) return;
-    const sub = p.price * qty;
-    total += sub;
-    msg += `• ${p.name} (x${qty}) — $${sub.toLocaleString("en-US",{minimumFractionDigits:2})} USD\n`;
+    const subtotal = p.price * qty;
+    total += subtotal;
+    msg += `• ${p.name} (x${qty}) — $${subtotal.toLocaleString("en-US",{minimumFractionDigits:2})} USD\n`;
   });
   msg += `\n💰 *Total Estimado: $${total.toLocaleString("en-US",{minimumFractionDigits:2})} USD*\n`;
   if (notes) msg += `\n📝 *Notas adicionales:*\n${notes}\n`;
